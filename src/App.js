@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route, Redirect } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//引入主页
+import Home from './views/Home/Home';
+//引入登录页面
+import Login from './views/Login/Login';
+//引入注册页面
+import Register from './views/Register/Register';
+
+import { dealFn } from './store';
+let DealHome = dealFn(Home);
+let DealLogin = dealFn(Login);
+
+
+
+export default class App extends React.Component {
+	componentWillMount() {
+
+	}
+    render() {
+        return (
+        	<div>
+	        	<Switch>
+		        	<Route path="/home/:id" component={DealHome}></Route>
+		        	<Route path="/login" component={DealLogin}></Route>
+		        	<Route path="/register" component={Register}></Route>
+		        	<Redirect from="/" extra to="/home/personalinfo"></Redirect>
+		        </Switch>
+	        </div>
+        )
+	}
 }
-
-export default App;

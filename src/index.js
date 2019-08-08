@@ -2,11 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//引入element 样式
+import 'element-theme-default';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import { Provider } from 'react-redux';
+import { store, dealFn } from './store';
+import { HashRouter, Route } from 'react-router-dom';
+
+ReactDOM.render(
+	<Provider store={store}>
+		<HashRouter>
+			<Route path="/" component={dealFn(App)}></Route>
+		</HashRouter>
+	</Provider>
+	, document.getElementById('root'));
+
