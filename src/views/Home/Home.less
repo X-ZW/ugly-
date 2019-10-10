@@ -1,0 +1,42 @@
+.home {
+	.home-header {
+		height: 50px;
+		padding: 20px;
+		font-size: 20px;
+		line-height: 50px;
+		background-color: skyblue;
+		display: flex;
+		justify-content: space-between;
+		.home-header-right {
+			margin-right: 50px;
+			display: flex;
+			span {
+				margin-right: 20px;
+			}
+			dl {
+				width: 100px;
+				dt {
+					cursor: pointer;
+				}
+				dd {
+					position: absolute;
+					z-index: 2;
+					background-color: yellow;
+					span {
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+	.content-right {
+			overflow: auto;
+			padding: 50px;
+			box-sizing: border-box;
+			background-color: lightyellow;
+			background-clip: content-box;
+			&::-webkit-scrollbar {
+	            display: none;
+        	}
+	}
+}
